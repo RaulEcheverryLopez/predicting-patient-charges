@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicción de Cargos Médicos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            background: #fff;
+            max-width: 420px;
+            margin: 60px auto 0 auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            padding: 32px 28px 24px 28px;
+        }
+        h2 {
+            text-align: center;
+            color: #f76b1c;
+            margin-bottom: 24px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        input, select, button {
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            font-size: 1rem;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #f76b1c;
+            box-shadow: 0 0 0 2px #fda08544;
+        }
+        button {
+            background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #fda085 0%, #f6d365 100%);
+        }
+        .result {
+            margin-top: 24px;
+            text-align: center;
+            background: #f6d36522;
+            color: #333;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 18px 6px 12px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Predicción de Cargos Médicos</h2>
+        <form action="/predict" method="post">
+            <input type="number" name="age" placeholder="Edad" min="0" max="120" required>
+            <select name="sex">
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+            </select>
+            <input type="number" step="any" name="bmi" placeholder="BMI" min="10" max="60" required>
+            <input type="number" name="children" placeholder="Hijos" min="0" max="10" required>
+            <select name="smoker">
+                <option value="yes">Fumador</option>
+                <option value="no">No Fumador</option>
+            </select>
+            <select name="region">
+                <option value="southwest">Southwest</option>
+                <option value="southeast">Southeast</option>
+                <option value="northwest">Northwest</option>
+                <option value="northeast">Northeast</option>
+            </select>
+            <button type="submit">Predecir</button>
+        </form>
+        {% if pred %}
+            <div class="result">{{ pred }}</div>
+        {% endif %}
+    </div>
+</body>
+</html> 
