@@ -20,6 +20,10 @@ pytest-cov==4.1.0
 # Code Quality
 flake8==6.1.0
 black==23.10.1
+pre-commit==3.6.0
+isort==5.13.2
+mypy==1.8.0
+flake8-docstrings==1.7.0
 
 # Documentation
 mkdocs==1.5.3
@@ -31,4 +35,4 @@ matplotlib==3.8.2
 seaborn==0.13.0
 evidently==0.4.0
 
-flask==2.3.2 
+flask==2.3.2

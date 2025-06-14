@@ -28,4 +28,4 @@ STREAMLIT_PORT = int(os.getenv("STREAMLIT_PORT", "8501"))
 
 # Model parameters
 RANDOM_STATE = 42
-TEST_SIZE = 0.2 
+TEST_SIZE = 0.2

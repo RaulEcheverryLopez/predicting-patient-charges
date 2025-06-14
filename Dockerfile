@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose ports for Flask
-EXPOSE 5000
+EXPOSE 80
 
 # Create a script to run Flask
 RUN echo '#!/bin/bash\n\
@@ -32,4 +32,6 @@ CMD ["./start.sh"]
 RUN mkdir -p models data
 
 # Expose ports for FastAPI and Streamlit
-EXPOSE 8000 8501 
+EXPOSE 8000 8501
+
+CMD ["streamlit", "run", "app.py", "--server.port=80", "--server.address=0.0.0.0"]
